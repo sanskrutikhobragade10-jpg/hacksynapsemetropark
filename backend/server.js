@@ -1186,6 +1186,12 @@ booking.parkingDurationMinutes = durationMinutes;
             return sendJSON(200, { success: true, message: 'Reservation cancelled' });
         });
     }
+    if (pathname === '/' && method === 'GET') {
+    return sendJSON(200, {
+        message: 'MetroPark Backend is Running!',
+        status: 'Live'
+    });
+}
 
     // ---------- STATIC FILE SERVING ----------
     let filePath = path.join(FRONTEND_DIR, pathname === '/' ? 'index.html' : pathname);
