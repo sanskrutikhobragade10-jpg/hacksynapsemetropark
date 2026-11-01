@@ -1,0 +1,1619 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+@import "tailwindcss";
+/* ================================
+   BASE
+================================ */
+
+html,
+body,
+#root {
+  margin: 0;
+  min-height: 100%;
+}
+
+body {
+  font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+  background: #f8fafc;
+  color: #0f172a;
+}
+
+/* ================================
+   SMARTPARK SPLASH
+================================ */
+
+.metro-splash {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  overflow: hidden;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background:
+    radial-gradient(
+      circle at center,
+      rgba(28, 220, 154, 0.13),
+      transparent 34%
+    ),
+    linear-gradient(145deg, #061a2d 0%, #03101d 55%, #020b14 100%);
+
+  color: white;
+}
+
+/* subtle background glow */
+
+.splash-bg-glow {
+  position: absolute;
+  width: 520px;
+  height: 520px;
+  border-radius: 50%;
+
+  background: rgba(35, 220, 158, 0.08);
+  filter: blur(80px);
+
+  animation: backgroundPulse 2.8s ease-in-out infinite;
+}
+
+/* ================================
+   CENTER LOGO AREA
+================================ */
+
+.splash-center {
+  position: absolute;
+  left: 50%;
+  top: 43%;
+
+  width: 310px;
+  height: 310px;
+
+  transform: translate(-50%, -50%);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ORIGINAL LOGO
+   Do not alter the logo itself.
+*/
+
+.smartpark-original-logo {
+  position: relative;
+  z-index: 20;
+
+  width: 235px;
+  height: auto;
+
+  object-fit: contain;
+
+  animation: logoAppear 0.65s ease-out both;
+}
+/* ================================
+   STRAIGHT METRO
+================================ */
+
+.straight-metro-track {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 58%;
+  height: 70px;
+  pointer-events: none;
+}
+
+.straight-track-line {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(49, 231, 167, 0.2),
+    rgba(49, 231, 167, 0.8),
+    rgba(49, 231, 167, 0.2),
+    transparent
+  );
+  box-shadow: 0 0 12px rgba(49, 231, 167, 0.25);
+}
+
+.speed-metro {
+  position: absolute;
+  left: -120px;
+  top: calc(50% - 17px);
+  width: 100px;
+  height: 36px;
+  opacity: 0;
+
+  animation: metroPass 1.35s cubic-bezier(0.2, 0.65, 0.1, 1) 0.8s
+    forwards;
+}
+
+.speed-metro-body {
+  position: relative;
+  width: 100px;
+  height: 36px;
+  border-radius: 8px 11px 6px 6px;
+
+  background: linear-gradient(
+    180deg,
+    #f4fffb 0%,
+    #c9f8e8 45%,
+    #24d99b 46%,
+    #0a9f73 100%
+  );
+
+  border: 2px solid rgba(255, 255, 255, 0.9);
+
+  box-shadow:
+    0 0 12px rgba(49, 231, 167, 0.8),
+    0 0 28px rgba(49, 231, 167, 0.35);
+}
+
+.speed-window {
+  position: absolute;
+  top: 7px;
+  width: 18px;
+  height: 10px;
+  border-radius: 2px;
+  background: #09253c;
+}
+
+.speed-window:nth-child(1) {
+  left: 10px;
+}
+
+.speed-window:nth-child(2) {
+  left: 35px;
+}
+
+.speed-window:nth-child(3) {
+  left: 60px;
+}
+
+.speed-front {
+  position: absolute;
+  right: 0;
+  top: 5px;
+  width: 10px;
+  height: 24px;
+  border-radius: 0 7px 5px 0;
+  background: #f3fffb;
+}
+
+/* subtle motion trail */
+
+.speed-metro::before,
+.speed-metro::after {
+  content: "";
+  position: absolute;
+  top: 17px;
+  right: 85px;
+  height: 2px;
+  border-radius: 999px;
+  background: rgba(49, 231, 167, 0.4);
+  filter: blur(1px);
+}
+
+.speed-metro::before {
+  width: 90px;
+}
+
+.speed-metro::after {
+  width: 55px;
+  right: 105px;
+  opacity: 0.5;
+}
+
+@keyframes metroPass {
+  0% {
+    opacity: 0;
+    transform: translateX(-80px);
+  }
+
+  10% {
+    opacity: 1;
+  }
+
+  30% {
+    transform: translateX(25vw);
+  }
+
+  65% {
+    transform: translateX(65vw);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateX(calc(100vw + 180px));
+  }
+}
+/* ================================
+   STRAIGHT EXIT TRACK
+================================ */
+
+.straight-metro-track {
+  position: absolute;
+
+  left: 0;
+  right: 0;
+  bottom: 29%;
+
+  height: 80px;
+
+  pointer-events: none;
+}
+
+.straight-track-line {
+  position: absolute;
+
+  left: 0;
+  right: 0;
+  top: 50%;
+
+  height: 2px;
+
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(49, 231, 167, 0.25),
+    rgba(49, 231, 167, 0.8),
+    rgba(49, 231, 167, 0.25),
+    transparent
+  );
+}
+
+/* stations */
+
+.straight-station {
+  position: absolute;
+
+  top: calc(50% - 4px);
+
+  width: 8px;
+  height: 8px;
+
+  border-radius: 50%;
+
+  background: #31e7a7;
+
+  box-shadow: 0 0 12px rgba(49, 231, 167, 0.8);
+}
+
+.straight-one {
+  left: 20%;
+}
+
+.straight-two {
+  left: 48%;
+}
+
+.straight-three {
+  left: 74%;
+}
+
+/* ================================
+   ZUIIIII METRO
+================================ */
+
+.speed-metro {
+  position: absolute;
+
+  left: -110px;
+  top: calc(50% - 16px);
+
+  width: 95px;
+  height: 35px;
+
+  opacity: 0;
+
+  animation: metroSpeedAway 1.15s cubic-bezier(0.15, 0.75, 0.05, 1)
+    1.75s forwards;
+}
+
+.speed-metro::before,
+.speed-metro::after {
+  content: "";
+
+  position: absolute;
+
+  top: 15px;
+  right: 85px;
+
+  width: 90px;
+  height: 2px;
+
+  border-radius: 999px;
+
+  background: rgba(49, 231, 167, 0.45);
+
+  filter: blur(1px);
+}
+
+.speed-metro::after {
+  right: 105px;
+  width: 55px;
+
+  opacity: 0.5;
+}
+
+.speed-metro-body {
+  position: relative;
+
+  width: 95px;
+  height: 35px;
+
+  border-radius: 8px 10px 6px 6px;
+
+  background: linear-gradient(
+    180deg,
+    #effff9 0%,
+    #c9f8e8 45%,
+    #24d99b 46%,
+    #099b70 100%
+  );
+
+  border: 2px solid white;
+
+  box-shadow:
+    0 0 12px rgba(49, 231, 167, 0.9),
+    0 0 30px rgba(49, 231, 167, 0.45);
+}
+
+.speed-window {
+  position: absolute;
+
+  top: 7px;
+
+  width: 17px;
+  height: 10px;
+
+  border-radius: 2px;
+
+  background: #08243b;
+}
+
+.speed-window:nth-child(1) {
+  left: 10px;
+}
+
+.speed-window:nth-child(2) {
+  left: 34px;
+}
+
+.speed-window:nth-child(3) {
+  left: 58px;
+}
+
+.speed-front {
+  position: absolute;
+
+  right: 0;
+  top: 5px;
+
+  width: 9px;
+  height: 24px;
+
+  border-radius: 0 7px 5px 0;
+
+  background: #f3fffb;
+}
+
+/* ================================
+   MESSAGE
+================================ */
+
+.splash-message {
+  position: absolute;
+
+  bottom: 9%;
+
+  width: 100%;
+
+  text-align: center;
+
+  opacity: 0;
+
+  animation: messageAppear 0.5s ease-out 0.8s forwards;
+}
+
+.splash-message p {
+  margin: 0;
+
+  font-size: 15px;
+  line-height: 1.5;
+
+  font-weight: 600;
+
+  letter-spacing: 0.02em;
+}
+
+.splash-message span {
+  color: #7cefc6;
+  font-weight: 500;
+}
+
+/* loading */
+
+.splash-loading {
+  width: 120px;
+  height: 3px;
+
+  margin: 16px auto 10px;
+
+  overflow: hidden;
+
+  border-radius: 999px;
+
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.splash-loading-progress {
+  width: 0;
+  height: 100%;
+
+  border-radius: inherit;
+
+  background: #31e7a7;
+
+  animation: loadingProgress 3s linear forwards;
+}
+
+/* dots */
+
+.splash-dots {
+  display: flex;
+
+  justify-content: center;
+
+  gap: 5px;
+}
+
+.splash-dots span {
+  width: 5px;
+  height: 5px;
+
+  border-radius: 50%;
+
+  background: rgba(255, 255, 255, 0.25);
+}
+
+.splash-dots .active {
+  background: #31e7a7;
+
+  box-shadow: 0 0 8px rgba(49, 231, 167, 0.8);
+}
+
+/* ================================
+   ANIMATIONS
+================================ */
+
+@keyframes logoAppear {
+  from {
+    opacity: 0;
+    transform: scale(0.88);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes metroEmerges {
+  0% {
+    opacity: 0;
+    transform:
+      translate(-50%, -50%)
+      translateX(-8px)
+      scale(0.2);
+  }
+
+  45% {
+    opacity: 1;
+    transform:
+      translate(-50%, -50%)
+      translateX(12px)
+      scale(0.75);
+  }
+
+  100% {
+    opacity: 1;
+    transform:
+      translate(-50%, -50%)
+      translateX(95px)
+      scale(1);
+  }
+}
+
+/* ONE QUICK CIRCLE */
+
+@keyframes quickOrbit {
+  0% {
+    transform: rotate(-35deg);
+  }
+
+  100% {
+    transform: rotate(325deg);
+  }
+}
+
+/* metro leaves screen */
+
+@keyframes metroSpeedAway {
+  0% {
+    opacity: 0;
+    transform: translateX(-100px) scale(0.7);
+  }
+
+  10% {
+    opacity: 1;
+  }
+
+  35% {
+    transform: translateX(25vw) scale(0.9);
+  }
+
+  65% {
+    transform: translateX(65vw) scale(1);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateX(calc(100vw + 160px)) scale(1.05);
+  }
+}
+
+@keyframes messageAppear {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes loadingProgress {
+  from {
+    width: 0;
+  }
+
+  to {
+    width: 100%;
+  }
+}
+
+@keyframes backgroundPulse {
+  0%,
+  100% {
+    opacity: 0.7;
+    transform: scale(0.95);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+}
+
+/* ================================
+   MOBILE
+================================ */
+
+@media (max-width: 640px) {
+  .splash-center {
+    width: 270px;
+    height: 270px;
+    top: 42%;
+  }
+
+  .smartpark-original-logo {
+    width: 205px;
+  }
+
+  .quick-orbit {
+    inset: 12px;
+  }
+
+  .straight-metro-track {
+    bottom: 30%;
+  }
+
+  .splash-message {
+    bottom: 8%;
+  }
+
+  .splash-message p {
+    font-size: 14px;
+  }
+}
+
+/* ================================
+   REDUCED MOTION
+================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  .metro-splash *,
+  .metro-splash {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}
+/* =================================
+   SMARTPARK HOME HERO
+================================= */
+
+.home-hero {
+  position: relative;
+  overflow: hidden;
+  margin-top: 12px;
+  padding: 34px 0 10px;
+}
+
+.home-hero::before {
+  content: "";
+  position: absolute;
+  top: -120px;
+  right: -100px;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  background: rgba(16, 166, 111, 0.08);
+  filter: blur(50px);
+  pointer-events: none;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  max-width: 720px;
+}
+
+.hero-topline {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.hero-badge,
+.location-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  border-radius: 999px;
+  padding: 7px 12px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+}
+
+.hero-badge {
+  background: #e9f8f1;
+  color: #10a66f;
+}
+
+.hero-badge-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #10a66f;
+  box-shadow: 0 0 8px rgba(16, 166, 111, 0.7);
+}
+
+.location-badge {
+  background: white;
+  color: #607d9a;
+  box-shadow: 0 3px 12px rgba(16, 42, 67, 0.06);
+  letter-spacing: 0;
+}
+
+.hero-title {
+  margin: 18px 0 0;
+  font-size: clamp(2.2rem, 6vw, 4.5rem);
+  line-height: 1.02;
+  letter-spacing: -0.045em;
+  font-weight: 800;
+  color: #102a43;
+}
+
+.hero-title span {
+  color: #10a66f;
+}
+
+.hero-description {
+  max-width: 590px;
+  margin-top: 18px;
+  font-size: 15px;
+  line-height: 1.7;
+  color: #607d9a;
+}
+
+@media (max-width: 640px) {
+  .home-hero {
+    padding-top: 24px;
+  }
+
+  .hero-title {
+    font-size: 2.35rem;
+  }
+
+  .hero-description {
+    font-size: 14px;
+    line-height: 1.65;
+  }
+}
+/* =================================
+   DASHBOARD HERO IMAGE
+================================ */
+
+.home-hero {
+  position: relative;
+  min-height: 390px;
+  overflow: hidden;
+  border-radius: 28px;
+  margin-top: 12px;
+  display: flex;
+  align-items: center;
+  isolation: isolate;
+}
+
+.hero-background {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+}
+
+.hero-background-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(7, 28, 45, 0.82) 0%,
+      rgba(7, 28, 45, 0.55) 38%,
+      rgba(7, 28, 45, 0.12) 75%,
+      rgba(7, 28, 45, 0.02) 100%
+    );
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 650px;
+  padding: 48px;
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 7px 12px;
+  border-radius: 999px;
+
+  background: rgba(255, 255, 255, 0.15);
+  color: white;
+
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+
+  backdrop-filter: blur(8px);
+}
+
+.hero-badge-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #31e7a7;
+  box-shadow: 0 0 10px rgba(49, 231, 167, 0.8);
+}
+
+.location-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+
+  margin-left: 8px;
+  padding: 7px 12px;
+
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.15);
+
+  color: white;
+  font-size: 11px;
+  font-weight: 600;
+
+  backdrop-filter: blur(8px);
+}
+
+.hero-title {
+  margin-top: 20px;
+
+  color: white;
+  font-size: clamp(2.4rem, 5vw, 4.2rem);
+  line-height: 1.02;
+  letter-spacing: -0.045em;
+  font-weight: 800;
+}
+
+.hero-title span {
+  color: #31e7a7;
+}
+
+.hero-description {
+  max-width: 530px;
+  margin-top: 18px;
+
+  color: rgba(255, 255, 255, 0.86);
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+/* Mobile */
+
+@media (max-width: 640px) {
+  .home-hero {
+    min-height: 360px;
+    border-radius: 24px;
+  }
+
+  .hero-background-image {
+    object-position: 58% center;
+  }
+
+  .hero-overlay {
+    background:
+      linear-gradient(
+        180deg,
+        rgba(7, 28, 45, 0.3) 0%,
+        rgba(7, 28, 45, 0.72) 55%,
+        rgba(7, 28, 45, 0.9) 100%
+      );
+  }
+
+  .hero-content {
+    padding: 28px;
+    align-self: flex-end;
+  }
+
+  .hero-title {
+    font-size: 2.4rem;
+  }
+
+  .hero-description {
+    font-size: 14px;
+  }
+}
+/* ================================
+   MOBILE METRO BANNER
+================================ */
+
+.metro-banner {
+  position: relative;
+  height: 220px;
+  margin-top: 12px;
+  overflow: hidden;
+  border-radius: 24px;
+  background: #071c2d;
+  isolation: isolate;
+}
+
+.metro-banner-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.metro-banner-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    rgba(7, 28, 45, 0.82) 0%,
+    rgba(7, 28, 45, 0.55) 42%,
+    rgba(7, 28, 45, 0.12) 100%
+  );
+}
+
+.metro-banner-content {
+  position: absolute;
+  left: 20px;
+  bottom: 20px;
+  right: 20px;
+  z-index: 2;
+}
+
+.metro-banner-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  color: white;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  backdrop-filter: blur(8px);
+}
+
+.metro-banner-content h1 {
+  margin: 10px 0 0;
+  color: white;
+  font-size: 2rem;
+  line-height: 1.05;
+  font-weight: 800;
+  letter-spacing: -0.04em;
+}
+
+.metro-banner-content h1 span {
+  color: #31e7a7;
+}
+
+.metro-banner-content p {
+  margin-top: 8px;
+  max-width: 300px;
+  color: rgba(255, 255, 255, 0.82);
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+/* Laptop / desktop */
+@media (min-width: 768px) {
+  .metro-banner {
+    height: 280px;
+    border-radius: 28px;
+  }
+
+  .metro-banner-content {
+    left: 36px;
+    bottom: 32px;
+  }
+
+  .metro-banner-content h1 {
+    font-size: 2.8rem;
+  }
+
+  .metro-banner-content p {
+    font-size: 14px;
+  }
+}
+/* ================================
+   FLOATING SEARCH PANEL
+================================ */
+
+.search-panel-section {
+  position: relative;
+  z-index: 5;
+  margin-top: -22px;
+  padding: 0 12px;
+}
+
+.search-panel {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px;
+  border: 1px solid rgba(226, 232, 240, 0.9);
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.97);
+  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.10);
+}
+
+.search-input-wrap {
+  position: relative;
+  flex: 1;
+  min-width: 0;
+}
+
+.search-panel-icon {
+  position: absolute;
+  left: 13px;
+  top: 50%;
+  width: 18px;
+  height: 18px;
+  transform: translateY(-50%);
+  color: #94a3b8;
+}
+
+.search-panel-input {
+  width: 100%;
+  height: 48px;
+  padding: 0 38px 0 40px;
+  border: 0;
+  outline: none;
+  background: transparent;
+  color: #102a43;
+  font-size: 14px;
+}
+
+.search-panel-input::placeholder {
+  color: #94a3b8;
+}
+
+.search-clear {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  width: 24px;
+  height: 24px;
+  transform: translateY(-50%);
+  border: 0;
+  border-radius: 50%;
+  background: #f1f5f9;
+  color: #64748b;
+  cursor: pointer;
+}
+
+.location-button {
+  display: flex;
+  height: 48px;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  padding: 0 14px;
+  border: 1px solid #e2e8f0;
+  border-radius: 15px;
+  background: white;
+  color: #102a43;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.location-button:hover {
+  border-color: #31e7a7;
+}
+
+.location-active {
+  border-color: #31e7a7;
+  background: #e9f8f1;
+  color: #0a9f73;
+}
+
+.location-message {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  margin-top: 8px;
+  padding: 10px 12px;
+  border-radius: 14px;
+  background: white;
+  color: #607d9a;
+  font-size: 12px;
+}
+
+/* Desktop */
+@media (min-width: 768px) {
+  .search-panel-section {
+    margin-top: -26px;
+    padding: 0 28px;
+  }
+
+  .search-panel {
+    padding: 9px;
+    border-radius: 22px;
+  }
+
+  .search-panel-input {
+    font-size: 15px;
+  }
+
+  .location-button {
+    padding: 0 20px;
+  }
+}
+/* =========================================================
+   SMARTPARK METRO - MOBILE FIRST HOME DESIGN
+   ========================================================= */
+
+/* ---------- METRO SCENIC BANNER ---------- */
+
+.metro-banner {
+  position: relative;
+  width: 100%;
+  height: 220px;
+  overflow: hidden;
+  border-radius: 24px;
+  isolation: isolate;
+  box-shadow: 0 12px 35px rgba(16, 42, 67, 0.10);
+}
+
+.metro-banner-image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.metro-banner-overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(
+      90deg,
+      rgba(7, 28, 45, 0.78) 0%,
+      rgba(7, 28, 45, 0.50) 45%,
+      rgba(7, 28, 45, 0.08) 100%
+    );
+}
+
+.metro-banner-content {
+  position: relative;
+  z-index: 2;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 24px;
+  max-width: 470px;
+  color: white;
+}
+
+.metro-banner-badge {
+  width: fit-content;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 7px 11px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  backdrop-filter: blur(8px);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+}
+
+.hero-badge-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #31e7a7;
+  box-shadow: 0 0 10px rgba(49, 231, 167, 0.8);
+}
+
+.metro-banner-content h1 {
+  margin: 13px 0 0;
+  font-size: 32px;
+  line-height: 1.05;
+  font-weight: 800;
+  letter-spacing: -0.04em;
+}
+
+.metro-banner-content h1 span {
+  color: #31e7a7;
+}
+
+.metro-banner-content p {
+  margin: 10px 0 0;
+  max-width: 330px;
+  font-size: 13px;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.86);
+}
+
+
+/* ---------- FLOATING SEARCH ---------- */
+
+.search-panel-section {
+  position: relative;
+  z-index: 5;
+  margin-top: -28px;
+  padding: 0 12px;
+}
+
+.search-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 8px;
+  background: rgba(255, 255, 255, 0.96);
+  border: 1px solid rgba(226, 232, 240, 0.9);
+  border-radius: 20px;
+  box-shadow:
+    0 15px 35px rgba(16, 42, 67, 0.12),
+    0 3px 8px rgba(16, 42, 67, 0.05);
+  backdrop-filter: blur(14px);
+}
+
+.search-input-wrap {
+  position: relative;
+  flex: 1;
+}
+
+.search-panel-icon {
+  position: absolute;
+  left: 15px;
+  top: 50%;
+  width: 19px;
+  height: 19px;
+  transform: translateY(-50%);
+  color: #8ba0b4;
+  pointer-events: none;
+}
+
+.search-panel-input {
+  width: 100%;
+  height: 52px;
+  border: 0;
+  outline: 0;
+  border-radius: 15px;
+  background: #f7f9fc;
+  padding: 0 44px;
+  color: #102a43;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.search-panel-input::placeholder {
+  color: #8ba0b4;
+}
+
+.search-panel-input:focus {
+  background: #f1f6f4;
+  box-shadow: inset 0 0 0 1px #31e7a7;
+}
+
+.search-clear {
+  position: absolute;
+  right: 13px;
+  top: 50%;
+  transform: translateY(-50%);
+  border: 0;
+  background: transparent;
+  color: #8ba0b4;
+  cursor: pointer;
+}
+
+.location-button {
+  height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 0 16px;
+  border: 1px solid #dce5ed;
+  border-radius: 15px;
+  background: white;
+  color: #102a43;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.location-button:hover {
+  border-color: #31e7a7;
+  background: #f5fffb;
+}
+
+.location-button.location-active {
+  border-color: #b9ead6;
+  background: #e9f8f1;
+  color: #10a66f;
+}
+
+.location-message {
+  margin-top: 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 13px;
+  border-radius: 13px;
+  background: #fff;
+  border: 1px solid #e5ebf0;
+  color: #607d9a;
+  font-size: 12px;
+}
+
+
+/* ---------- LOCATION HIERARCHY ---------- */
+
+.location-hierarchy {
+  margin-top: 32px;
+  padding: 0;
+}
+
+.location-heading {
+  margin-bottom: 22px;
+}
+
+.location-eyebrow {
+  margin: 0 0 5px;
+  color: #10a66f;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+}
+
+.location-heading h2 {
+  margin: 0;
+  color: #102a43;
+  font-size: 21px;
+  line-height: 1.2;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.location-step {
+  margin-bottom: 20px;
+}
+
+.location-step-label {
+  margin: 0 0 9px;
+  color: #607d9a;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.location-options {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  padding: 2px 2px 5px;
+  scrollbar-width: none;
+}
+
+.location-options::-webkit-scrollbar {
+  display: none;
+}
+
+.location-option {
+  flex: 0 0 auto;
+  min-height: 42px;
+  padding: 0 17px;
+  border: 1px solid #dce5ed;
+  border-radius: 13px;
+  background: white;
+  color: #102a43;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.location-option:hover {
+  border-color: #31e7a7;
+}
+
+.location-option-active {
+  border-color: #10a66f;
+  background: #10a66f;
+  color: white;
+  box-shadow: 0 5px 14px rgba(16, 166, 111, 0.18);
+}
+
+
+/* ---------- STATION SELECTION ---------- */
+
+.station-location-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.station-location-option {
+  width: 100%;
+  min-height: 62px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  padding: 11px 14px;
+  border: 1px solid #e1e8ee;
+  border-radius: 16px;
+  background: white;
+  color: #102a43;
+  cursor: pointer;
+  text-align: left;
+  transition: 0.2s ease;
+}
+
+.station-location-option:hover {
+  border-color: #31e7a7;
+  transform: translateY(-1px);
+}
+
+.station-location-active {
+  border-color: #10a66f;
+  background: #f1fbf7;
+  box-shadow: inset 0 0 0 1px rgba(16, 166, 111, 0.12);
+}
+
+.station-location-name {
+  display: block;
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.station-location-subtitle {
+  display: block;
+  margin-top: 3px;
+  color: #8ba0b4;
+  font-size: 11px;
+}
+
+.station-location-option > svg {
+  color: #9aabba;
+}
+
+.station-location-active > svg {
+  color: #10a66f;
+}
+
+
+/* ---------- SMART PICK ---------- */
+
+@media (max-width: 640px) {
+  .metro-banner {
+    height: 205px;
+    border-radius: 22px;
+  }
+
+  .metro-banner-image {
+    object-position: 58% center;
+  }
+
+  .metro-banner-overlay {
+    background:
+      linear-gradient(
+        90deg,
+        rgba(7, 28, 45, 0.76) 0%,
+        rgba(7, 28, 45, 0.43) 55%,
+        rgba(7, 28, 45, 0.08) 100%
+      );
+  }
+
+  .metro-banner-content {
+    padding: 21px;
+  }
+
+  .metro-banner-content h1 {
+    font-size: 29px;
+  }
+
+  .metro-banner-content p {
+    font-size: 12px;
+    max-width: 270px;
+  }
+
+  .search-panel-section {
+    margin-top: -25px;
+    padding: 0 6px;
+  }
+
+  .search-panel {
+    padding: 7px;
+    border-radius: 18px;
+  }
+
+  .search-panel-input,
+  .location-button {
+    height: 49px;
+  }
+
+  .location-button {
+    width: 100%;
+  }
+
+  .location-hierarchy {
+    margin-top: 28px;
+  }
+}
+
+
+/* ---------- TABLET ---------- */
+
+@media (min-width: 641px) {
+  .metro-banner {
+    height: 250px;
+  }
+
+  .metro-banner-content {
+    padding: 32px;
+  }
+
+  .metro-banner-content h1 {
+    font-size: 38px;
+  }
+
+  .search-panel-section {
+    margin-top: -30px;
+    padding: 0 18px;
+  }
+
+  .search-panel {
+    flex-direction: row;
+    align-items: center;
+    padding: 8px;
+  }
+
+  .location-button {
+    min-width: 180px;
+  }
+
+  .location-hierarchy {
+    margin-top: 38px;
+  }
+
+  .station-location-list {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+
+/* ---------- LAPTOP ---------- */
+
+@media (min-width: 1024px) {
+  .metro-banner {
+    height: 270px;
+    border-radius: 28px;
+  }
+
+  .metro-banner-content {
+    padding: 40px;
+  }
+
+  .metro-banner-content h1 {
+    font-size: 44px;
+  }
+
+  .metro-banner-content p {
+    font-size: 14px;
+  }
+
+  .search-panel-section {
+    margin-top: -34px;
+    padding: 0 30px;
+  }
+
+  .location-hierarchy {
+    margin-top: 42px;
+  }
+
+  .station-location-list {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+
+/* ---------- MOBILE SPACING ---------- */
+
+@media (max-width: 640px) {
+  main {
+    overflow-x: hidden;
+  }
+
+  .location-heading h2 {
+    font-size: 20px;
+  }
+
+  .location-step {
+    margin-bottom: 18px;
+  }
+}
